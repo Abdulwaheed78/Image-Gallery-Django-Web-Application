@@ -17,7 +17,7 @@
                 <form action="" method="post" enctype="multipart/form-data">
                     {%csrf_token%}
                     <input  class="  mb-3 " type="text" name="title" value="{{im.title}}" placeholder="Enter title" required>
-                    <input  class="mb-3 " type="file" name="image" required placeholder="Image">
+                    <input  class="mb-3 " type="file" name="image" placeholder="Image">
                     <button  class=" btn btn-danger mb-3" type="submit">Post</button>
                 </form>
                 <hr>
