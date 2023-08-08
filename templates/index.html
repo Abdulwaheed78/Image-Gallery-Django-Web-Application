@@ -10,65 +10,68 @@
             rel="stylesheet"
             integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
             crossorigin="anonymous">
+       
     </head>
 
     <body style="background-color:#FCE4EC;">
 
-                    <div class="row">
-                        <div class="col-sm-3 mt-5">
-                        
-                            <div class="card" style="width: 100%; margin-left:5px;">
-                                <div class="card-body">
-                                  <center><h3 class="card-title text-danger">Post Your Images From Here.</h3></center>
-                                  <hr>
-                                  <form action method="post" enctype="multipart/form-data">
-                                    {%csrf_token%}
-                                    <div class="container"><input class="mb-3 mt-2"
-                                            style="height: 55px; width: 100%; border-radius: 5px; border-color:black;"
-                                            type="text" name="title"
-                                            placeholder="Enter title" required></div>
-                                    <div class="container"><input
-                                            style="height: 55px; width: 100%; border-radius: 5px; border-color:black"
-                                            class="mb-3 " type="file" name="image"
-                                            required
-                                            placeholder="Image"></div>
-                                    <div class="container"><button
-                                            style="height: 55px; width: 100%; border-radius: 5px; border-color:black"
-                                            class=" btn btn-danger mb-3" type="submit"><h3><strong>Post</strong></h3></button></div>
-                                </form>
-                              </div>
-                              </div>
-                              
-                        
-                        </div>
-                        <div class="col-sm-9">
-                            <center><h1 class="text-danger mt-5" style="font-size: xx-large;"> <b>
-                                Upload Your Best Images</b></h1></center><br>
-                            <div class="row mt-2">
-                                {%for x in data%}
-                                <div class="col-sm-3">
-                                    <div class="card m-2">
-                                        <div class="card-header"><h5><strong>{{x.title}}
-                                                </strong></h5></div>
-                                        <img src="{{x.image.url}}" class="card-img-top"
-                                            alt
-                                            height="200px" width="150px">
-        
-                                        <div class=" form-control col-sm-6"> <a
-                                                href="{%url 'edit' x.id%}"
-                                                class="btn btn-dark">Edit</a>
-                                            <a href="{%url 'delete' x.id%}"
-                                                class="btn btn-danger">Delete</a>
-                                                <small>({{x.date}})</small>
-                                        </div>
-        
-                                    </div>
-                                </div>
-                                {%endfor%}
+        <div class="row">
+            <div class="col-sm-3 mt-5 fixed-top">
+
+                <div class="card" style="width: 100%; margin-left:5px;">
+                    <div class="card-body">
+                        <center><h3 class="card-title text-danger">Post Your
+                                Images From Here.</h3></center>
+                        <hr>
+                        <form action method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+                            <div class="container"><input class="mb-3 mt-2"
+                                    style="height: 55px; width: 100%; border-radius: 5px; border-color:black;"
+                                    type="text" name="title"
+                                    placeholder="Enter title" required></div>
+                            <div class="container"><input
+                                    style="height: 55px; width: 100%; border-radius: 5px; border-color:black"
+                                    class="mb-3 " type="file" name="image"
+                                    required
+                                    placeholder="Image"></div>
+                            <div class="container"><button
+                                    style="height: 55px; width: 100%; border-radius: 5px; border-color:black"
+                                    class=" btn btn-danger mb-3" type="submit"><h3><strong>Post</strong></h3></button></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-9" style="margin-left: 540px;">
+                <center><h1 class="text-danger mt-5"
+                        style="font-size: xx-large;"> <b>
+                            Upload Your Best Images</b></h1></center><br>
+                <div class="row mt-2">
+                    {%for x in data%}
+                    <div class="col-sm-3">
+                        <div class="card m-2">
+                            <div class="card-header"><strong>{{x.title}}
+                                </strong><small>({{x.date}})</small></div>
+                            <img src="{{x.image.url}}" class="card-img-top"
+                                alt
+                                height="200px" width="150px">
+
+                            <div class=" form-control col-sm-6"> <a
+                                    href="{%url 'edit' x.id%}"
+                                    class="btn btn-dark">Edit</a>
+                                <a href="{%url 'delete' x.id%}"
+                                    class="btn btn-danger">Delete</a>
+
                             </div>
+
                         </div>
                     </div>
-
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+       
+        
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
